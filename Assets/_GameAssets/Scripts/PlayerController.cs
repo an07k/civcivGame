@@ -8,10 +8,14 @@ public class PlayerController : MonoBehaviour
     [Header("Movement Stg")]
     [SerializeField] private float _movementSpeed;
 
+    [SerializeField] private KeyCode _movementKey;
+
+    [Header("Slide Stg")]
+    [SerializeField] private KeyCode _slideKey;
+    [SerializeField] private float _slideMultiplier;
+
     [Header("Jump Stg")]
-
     [SerializeField] private float _jumpForce;
-
     [SerializeField] private KeyCode _jumpKey;
     [SerializeField] private bool _canJump;
     [SerializeField] private float _jumpCooldown;
@@ -21,11 +25,14 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private LayerMask _groundLayer;
 
     private float _horizontalInput, _verticalInput;
-
+    private bool _isSliding;
     private Vector3 _movementDirection;
 
     private void Awake()
     {
+        _slideMultiplier = 3;
+        _movementKey = KeyCode.Z;
+        _slideKey = KeyCode.LeftShift;
         _jumpKey = KeyCode.Space;
         _playerRigidbody = GetComponent<Rigidbody>();
         _playerRigidbody.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
@@ -53,6 +60,15 @@ public class PlayerController : MonoBehaviour
             SetPlayerJump();
             Invoke(nameof(ResetJumping), _jumpCooldown);
         }
+
+        if (Input.GetKeyDown(_slideKey))
+        {
+            _isSliding = true;
+        }
+        else if (Input.GetKeyDown(_movementKey))
+        {
+            _isSliding = false;
+        }
     }
 
     private void SetPlayerMovement()
@@ -60,7 +76,14 @@ public class PlayerController : MonoBehaviour
         _movementDirection = _orientationTransform.forward * _verticalInput +
         _orientationTransform.right * _horizontalInput;
 
-        _playerRigidbody.AddForce(_movementDirection.normalized * _movementSpeed, ForceMode.Force);
+        if (_isSliding)
+        {
+            _playerRigidbody.AddForce(_movementDirection.normalized * _movementSpeed * _slideMultiplier, ForceMode.Force);
+        }
+        else
+        {
+            _playerRigidbody.AddForce(_movementDirection.normalized * _movementSpeed, ForceMode.Force);
+        }
     }
 
     private void SetPlayerJump()

@@ -770,7 +770,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _orientationTransform: {fileID: 937263908}
-  _movementSpeed: 15
+  _movementSpeed: 10
+  _movementKey: 0
+  _slideKey: 0
+  _slideMultiplier: 0
   _jumpForce: 5
   _jumpKey: 0
   _canJump: 1
