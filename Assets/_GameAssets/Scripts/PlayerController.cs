@@ -1,3 +1,4 @@
+using NUnit.Framework.Constraints;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -13,6 +14,7 @@ public class PlayerController : MonoBehaviour
     [Header("Slide Stg")]
     [SerializeField] private KeyCode _slideKey;
     [SerializeField] private float _slideMultiplier;
+    [SerializeField] private float _slideDamping;
 
     [Header("Jump Stg")]
     [SerializeField] private float _jumpForce;
@@ -23,10 +25,23 @@ public class PlayerController : MonoBehaviour
     [Header("Ground Check")]
     [SerializeField] private float _playerHeight;
     [SerializeField] private LayerMask _groundLayer;
+    [SerializeField] private float _groundDamping;
 
     private float _horizontalInput, _verticalInput;
     private bool _isSliding;
     private Vector3 _movementDirection;
+
+    private void SetPlayerDamping()
+    {
+        if (_isSliding)
+        {
+            _playerRigidbody.linearDamping = _slideDamping;
+        }
+        else
+        {
+            _playerRigidbody.linearDamping = _groundDamping;
+        }
+    }
 
     private void Awake()
     {
@@ -43,9 +58,11 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         SetInputs();
+        LimitPlayerSpeed();
     }
     private void FixedUpdate()
     {
+        SetPlayerDamping();
         SetPlayerMovement();
     }
     private void SetInputs()
@@ -71,6 +88,16 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void LimitPlayerSpeed()
+    {
+        Vector3 flatVelocity = new Vector3(_playerRigidbody.linearVelocity.x, 0f, _playerRigidbody.linearVelocity.z);
+
+        if (flatVelocity.magnitude > _movementSpeed)
+        {
+            Vector3 limitedVelocity = flatVelocity.normalized * _movementSpeed;
+            _playerRigidbody.linearVelocity = new Vector3(limitedVelocity.x, _playerRigidbody.linearVelocity.y, limitedVelocity.z);   
+        }
+    }
     private void SetPlayerMovement()
     {
         _movementDirection = _orientationTransform.forward * _verticalInput +
