@@ -254,6 +254,7 @@ GameObject:
   - component: {fileID: 330585544}
   - component: {fileID: 330585547}
   - component: {fileID: 330585548}
+  - component: {fileID: 330585549}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -328,8 +329,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.3726062, z: -9.309999}
+  m_LocalRotation: {x: 0.19479723, y: 0, z: 0, w: 0.98084354}
+  m_LocalPosition: {x: 0, y: 1.9926063, z: -9.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -411,6 +412,22 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
   CustomBlends: {fileID: 0}
+--- !u!114 &330585549
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 330585543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 771a2cb2dbff69a4fb780663ed7e414f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerTransform: {fileID: 1210266629}
+  _orientationTransform: {fileID: 937263908}
+  _playerVisualTransform: {fileID: 2255019293847078892}
+  _rotationSpeed: 20
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
@@ -715,6 +732,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1210266629}
   - component: {fileID: 1210266632}
+  - component: {fileID: 1210266633}
   - component: {fileID: 1210266631}
   - component: {fileID: 1210266630}
   m_Layer: 0
@@ -813,11 +831,25 @@ MonoBehaviour:
   _jumpKey: 0
   _canJump: 1
   _jumpCooldown: 0.5
+  _airDamping: 5
+  _airMultiplier: 1
   _playerHeight: 1
   _groundLayer:
     serializedVersion: 2
     m_Bits: 64
   _groundDamping: 0
+--- !u!114 &1210266633
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1210266628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3a31d540a1cbd349ba1e7b5e8b9d034, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1234530037
 GameObject:
   m_ObjectHideFlags: 0
@@ -829,6 +861,7 @@ GameObject:
   - component: {fileID: 1234530039}
   - component: {fileID: 1234530038}
   - component: {fileID: 1234530040}
+  - component: {fileID: 1234530041}
   m_Layer: 0
   m_Name: CinemachineCamera
   m_TagString: Untagged
@@ -887,8 +920,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1234530037}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.3726062, z: -9.309999}
+  m_LocalRotation: {x: 0.19479723, y: 0, z: 0, w: 0.98084354}
+  m_LocalPosition: {x: 0, y: 1.9926063, z: -9.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -906,11 +939,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 625c14eee3ad46c99df7c7c891ef668a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Damping: {x: 3, y: 1.5, z: 0.3}
-  ShoulderOffset: {x: 0.5, y: -0.66, z: 0}
-  VerticalArmLength: 2.07
+  Damping: {x: 0.5, y: 1, z: 0.3}
+  ShoulderOffset: {x: 0, y: 1.5, z: -1}
+  VerticalArmLength: 0.53
   CameraSide: 0.5
-  CameraDistance: 3.31
+  CameraDistance: 2.5
   AvoidObstacles:
     Enabled: 0
     CollisionFilter:
@@ -920,6 +953,35 @@ MonoBehaviour:
     CameraRadius: 0.2
     DampingIntoCollision: 0
     DampingFromCollision: 0.5
+--- !u!114 &1234530041
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1234530037}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f38bda98361e1de48a4ca2bd86ea3c17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Composition:
+    ScreenPosition: {x: 0, y: 0}
+    DeadZone:
+      Enabled: 1
+      Size: {x: 0.2, y: 0.2}
+    HardLimits:
+      Enabled: 0
+      Size: {x: 0.8, y: 0.8}
+      Offset: {x: 0, y: 0}
+  CenterOnActivate: 1
+  TargetOffset: {x: 0, y: 0.5, z: 0.2}
+  Damping: {x: 0.8, y: 0.8}
+  Lookahead:
+    Enabled: 1
+    Time: 0.1
+    Smoothing: 5
+    IgnoreY: 0
 --- !u!1 &1362044387
 GameObject:
   m_ObjectHideFlags: 0
