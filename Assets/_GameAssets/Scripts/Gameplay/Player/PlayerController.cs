@@ -1,9 +1,12 @@
+using System;
 using NUnit.Framework.Constraints;
 using UnityEngine;
 using UnityEngine.UIElements;
 
 public class PlayerController : MonoBehaviour
 {
+    public event Action OnPlayerJumped;
+
     [Header("References")]
     [SerializeField] private Transform _orientationTransform;
     private PlayerStateController _stateController;
@@ -49,6 +52,8 @@ public class PlayerController : MonoBehaviour
         _playerRigidbody.freezeRotation = true;
         _playerRigidbody.interpolation = RigidbodyInterpolation.Interpolate;
     }
+
+   
 
     private void Update()
     {
@@ -145,6 +150,8 @@ public class PlayerController : MonoBehaviour
     }
     private void SetPlayerJump()
     {
+        OnPlayerJumped?.Invoke();
+        
         _playerRigidbody.linearVelocity = new Vector3(_playerRigidbody.linearVelocity.x, 0f, _playerRigidbody.linearVelocity.z);
         _playerRigidbody.AddForce(transform.up * _jumpForce, ForceMode.Impulse);
     }
