@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     private PlayerStateController _stateController;
     private Rigidbody _playerRigidbody;
     [Header("Movement Stg")]
+    [SerializeField] private Vector3 _baseScale;
     [SerializeField] private float _movementSpeed;
 
     [SerializeField] private KeyCode _movementKey;
@@ -43,6 +44,8 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
+        
+        _baseScale = transform.localScale;
         _startingMovementSpeed = _movementSpeed;
         _startingJumpForce = _jumpForce;
 
@@ -189,12 +192,29 @@ public class PlayerController : MonoBehaviour
         _movementSpeed = _startingMovementSpeed;
     }
 
-    public void SetJumpForce(float force, float duration) {
+    public void SetJumpForce(float force, float duration)
+    {
         _jumpForce += force;
         Invoke(nameof(ResetJumpForce), duration);
     }
+    public void IncreaseScale(float multiply, float duration)
+    {
+        _baseScale.x = _baseScale.x * 1.5f;
+        _baseScale.y = _baseScale.y * 1.5f;
+        _baseScale.z = _baseScale.z * 1.5f;
+        transform.localScale = _baseScale;
+        Invoke(nameof(ResetScale), duration);
+    }
 
-    private void ResetJumpForce() {
+    private void ResetScale()
+    {
+        _baseScale.x = (_baseScale.x*2) / 3;
+        _baseScale.y = (_baseScale.y*2) / 3;
+        _baseScale.z = (_baseScale.z*2) / 3;
+        transform.localScale = _baseScale;
+    }
+    private void ResetJumpForce()
+    {
         _jumpForce = _startingJumpForce;
     }
     #endregion
