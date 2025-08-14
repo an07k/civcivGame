@@ -197,20 +197,28 @@ public class PlayerController : MonoBehaviour
         _jumpForce += force;
         Invoke(nameof(ResetJumpForce), duration);
     }
+    private float _multiply2;
     public void IncreaseScale(float multiply, float duration)
     {
-        _baseScale.x = _baseScale.x * 1.5f;
-        _baseScale.y = _baseScale.y * 1.5f;
-        _baseScale.z = _baseScale.z * 1.5f;
+        _multiply2 = multiply;
+        _baseScale.x = _baseScale.x * multiply;
+        _baseScale.y = _baseScale.y * multiply;
+        _baseScale.z = _baseScale.z * multiply;
         transform.localScale = _baseScale;
-        Invoke(nameof(ResetScale), duration);
+        Invoke(nameof(ResetScaleFake), duration);
     }
 
-    private void ResetScale()
+    
+    private void ResetScaleFake()
     {
-        _baseScale.x = (_baseScale.x*2) / 3;
-        _baseScale.y = (_baseScale.y*2) / 3;
-        _baseScale.z = (_baseScale.z*2) / 3;
+        ResetScale(_multiply2);
+    }
+
+    private void ResetScale(float multiplier)
+    {
+        _baseScale.x = _baseScale.x / multiplier;
+        _baseScale.y = _baseScale.y / multiplier;
+        _baseScale.z = _baseScale.z / multiplier;
         transform.localScale = _baseScale;
     }
     private void ResetJumpForce()

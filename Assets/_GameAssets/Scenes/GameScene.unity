@@ -386,8 +386,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerController: {fileID: 1210266632}
-  _decreaseSpeed: -15
-  _decreaseDuration: 5
+  _wheatDesignSO: {fileID: 11400000, guid: d54fda2d10549834eaafd84ea9245ec2, type: 2}
 --- !u!1 &309078705
 GameObject:
   m_ObjectHideFlags: 0
@@ -526,6 +525,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerController: {fileID: 1210266632}
   _transform: {fileID: 1210266629}
+  _wheatDesignSO: {fileID: 11400000, guid: f8a7ad582d84b7f40ab4809b37d3aa47, type: 2}
 --- !u!33 &309078711
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -935,6 +935,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerController: {fileID: 1210266632}
   _transform: {fileID: 1210266629}
+  _wheatDesignSO: {fileID: 11400000, guid: f8a7ad582d84b7f40ab4809b37d3aa47, type: 2}
 --- !u!23 &645211594
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1276,8 +1277,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerController: {fileID: 1210266632}
-  _boostJump: 8
-  _jumpBoostDuration: 5
+  _wheatDesignSO: {fileID: 11400000, guid: 17fc540f205dd3e4e919bfae173549d8, type: 2}
 --- !u!1 &937263907
 GameObject:
   m_ObjectHideFlags: 0
@@ -2559,9 +2559,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52646060f9ce05844b62a2760b5b0eed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _wheatDesignSO: {fileID: 11400000, guid: 624767fb16679354b9a585f31ae6a04e, type: 2}
   _playerController: {fileID: 1210266632}
-  _BoostSpeed: 10
-  _BoostDuration: 5
 --- !u!1 &8747238533396487480
 GameObject:
   m_ObjectHideFlags: 0

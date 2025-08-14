@@ -4,13 +4,11 @@ public class RottenWheatCollectible : MonoBehaviour, ICollectible
 {
     [SerializeField] private PlayerController _playerController;
 
-    [SerializeField] private float _decreaseSpeed;
-
-    [SerializeField] private float _decreaseDuration;
+    [SerializeField] private WheatDesignSO _wheatDesignSO;
 
     public void Collect()
     {
-        _playerController.SetMovementSpeed(_decreaseSpeed, _decreaseDuration);
+        _playerController.SetMovementSpeed(_wheatDesignSO.IncreaseDecreaseMultiplier, _wheatDesignSO.ResetBoostDuration);
         Destroy(gameObject);
     }
 }
