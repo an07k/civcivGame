@@ -1,7 +1,7 @@
 
 using UnityEngine;
 
-public class DonkeyWheatCollectible : MonoBehaviour
+public class DonkeyWheatCollectible : MonoBehaviour, ICollectible
 {
     [SerializeField] private PlayerController _playerController;
     [SerializeField] private Transform _transform;

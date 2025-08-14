@@ -1,7 +1,7 @@
 using UnityEngine;
 
 
-public class GoldWheatCollectible : MonoBehaviour
+public class GoldWheatCollectible : MonoBehaviour, ICollectible
 {
     [SerializeField] private PlayerController _playerController;
 
