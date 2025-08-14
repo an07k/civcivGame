@@ -386,7 +386,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerController: {fileID: 1210266632}
-  _decreaseSpeed: -10
+  _decreaseSpeed: -15
   _decreaseDuration: 5
 --- !u!1 &309078705
 GameObject:
@@ -1276,7 +1276,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerController: {fileID: 1210266632}
-  _boostJump: 10
+  _boostJump: 8
   _jumpBoostDuration: 5
 --- !u!1 &937263907
 GameObject:
@@ -1443,22 +1443,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _orientationTransform: {fileID: 937263908}
   _baseScale: {x: 0, y: 0, z: 0}
-  _movementSpeed: 35
+  _movementSpeed: 40
   _movementKey: 122
   _slideKey: 304
-  _slideMultiplier: 1.5
-  _slideDamping: 2
-  _jumpForce: 5
+  _slideMultiplier: 1.25
+  _slideDamping: 2.2
+  _jumpForce: 7
   _jumpKey: 32
   _canJump: 1
   _jumpCooldown: 0.5
-  _airDamping: 5
-  _airMultiplier: 1
+  _airDamping: 1
+  _airMultiplier: 0.5
   _playerHeight: 1
   _groundLayer:
     serializedVersion: 2
     m_Bits: 64
-  _groundDamping: 3
+  _groundDamping: 5
 --- !u!114 &1210266633
 MonoBehaviour:
   m_ObjectHideFlags: 0
