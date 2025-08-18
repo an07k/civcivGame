@@ -44,7 +44,7 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
-        
+
         _baseScale = transform.localScale;
         _startingMovementSpeed = _movementSpeed;
         _startingJumpForce = _jumpForce;
@@ -208,7 +208,7 @@ public class PlayerController : MonoBehaviour
         Invoke(nameof(ResetScaleFake), duration);
     }
 
-    
+
     private void ResetScaleFake()
     {
         ResetScale(_multiply2);
@@ -226,4 +226,9 @@ public class PlayerController : MonoBehaviour
         _jumpForce = _startingJumpForce;
     }
     #endregion
+
+    public Rigidbody GetPlayerRigidbody()
+    {
+        return _playerRigidbody;
+    }
 }
