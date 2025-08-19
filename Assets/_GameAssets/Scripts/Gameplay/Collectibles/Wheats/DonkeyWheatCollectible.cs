@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class DonkeyWheatCollectible : MonoBehaviour, ICollectible
 {
     [SerializeField] private PlayerController _playerController;
-    [SerializeField] private Transform _transform;
+    [SerializeField] private WheatDesignSO _wheatDesignSO;
     [SerializeField] private PlayerStateUI _playerStateUI;
 
     private RectTransform _playerBoosterTransform;
@@ -14,13 +14,16 @@ public class DonkeyWheatCollectible : MonoBehaviour, ICollectible
 
     private void Awake()
     {
-        _playerBoosterTransform = _playerStateUI.GetBoosterSpeedTransform;
+        _playerBoosterTransform = _playerStateUI.GetBoosterScaleTransform;
         _playerBoosterImage = _playerBoosterTransform.GetComponent<Image>();
     }
-    [SerializeField] private WheatDesignSO _wheatDesignSO;
     public void Collect()
     {
         _playerController.IncreaseScale(_wheatDesignSO.IncreaseDecreaseMultiplier, _wheatDesignSO.ResetBoostDuration);
-        Destroy(gameObject);
+        
+        _playerStateUI.BoosterUIAnimations(_playerBoosterTransform, _playerBoosterImage,
+            _playerStateUI.GetDonkeyWheatImage, _wheatDesignSO.ActiveSprite, _wheatDesignSO.PassiveSprite,
+            _wheatDesignSO.ActiveWheatSprite, _wheatDesignSO.PassiveWheatSprite, _wheatDesignSO.ResetBoostDuration);
+        Destroy(this.gameObject);
     }
 }

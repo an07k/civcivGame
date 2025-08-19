@@ -9,6 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7874157510534462392}
+  - component: {fileID: 5993227563071269190}
+  - component: {fileID: 2606294135259829607}
   m_Layer: 0
   m_Name: RottenWheat
   m_TagString: RottenWheat
@@ -32,6 +34,42 @@ Transform:
   - {fileID: 8953236609698877897}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5993227563071269190
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7660397308532775763}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 991c5f7505b3f86469957847162f5cfa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerController: {fileID: 0}
+  _wheatDesignSO: {fileID: 11400000, guid: d54fda2d10549834eaafd84ea9245ec2, type: 2}
+  _playerStateUI: {fileID: 0}
+--- !u!65 &2606294135259829607
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7660397308532775763}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.74145955, y: 0.98769015, z: 0.14651388}
+  m_Center: {x: 0.04649511, y: -0.19377175, z: -0.003049519}
 --- !u!1 &8875334057040996280
 GameObject:
   m_ObjectHideFlags: 0

@@ -118,6 +118,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5712209728949562630}
+  - component: {fileID: 3263737694455950497}
+  - component: {fileID: 6908764266143340534}
   m_Layer: 0
   m_Name: GoldWheat
   m_TagString: GoldWheat
@@ -141,3 +143,39 @@ Transform:
   - {fileID: 5060598492019210200}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3263737694455950497
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1490439601334249497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52646060f9ce05844b62a2760b5b0eed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerStateUI: {fileID: 0}
+  _wheatDesignSO: {fileID: 11400000, guid: 624767fb16679354b9a585f31ae6a04e, type: 2}
+  _playerController: {fileID: 0}
+--- !u!65 &6908764266143340534
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1490439601334249497}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.74145955, y: 0.98769015, z: 0.14651388}
+  m_Center: {x: 0.04649511, y: -0.19377175, z: -0.003049519}

@@ -16,12 +16,14 @@ public class PlayerStateUI : MonoBehaviour
     [SerializeField] private RectTransform _boostSpeedTransform;
     [SerializeField] private RectTransform _boostJumpTransform;
     [SerializeField] private RectTransform _boostSlowTransform;
+    [SerializeField] private RectTransform _boostScaleTransform;
 
     [Header("Images")]
 
     [SerializeField] private Image _goldWheatImage;
     [SerializeField] private Image _holyWheatImage;
     [SerializeField] private Image _rottenWheatImage;
+    [SerializeField] private Image _donkeyWheatImage;
 
     [Header("Sprites")]
 
@@ -43,9 +45,13 @@ public class PlayerStateUI : MonoBehaviour
     public RectTransform GetBoosterJumpTransform => _boostJumpTransform;
     public RectTransform GetBoosterSlowTransform => _boostSlowTransform;
 
+    public RectTransform GetBoosterScaleTransform => _boostScaleTransform;
+
     public Image GetGoldWheatImage => _goldWheatImage;
     public Image GetHolyWheatImage => _holyWheatImage;
     public Image GetRottenWheatImage => _rottenWheatImage;
+
+    public Image GetDonkeyWheatImage => _donkeyWheatImage;
     void Awake()
     {
         playerWalkingImage = _playerWalkingTransform.GetComponent<Image>();

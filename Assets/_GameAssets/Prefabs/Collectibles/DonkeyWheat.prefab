@@ -11,8 +11,6 @@ GameObject:
   - component: {fileID: 1063229170972050034}
   - component: {fileID: 1644850455567380389}
   - component: {fileID: 5491177428300125153}
-  - component: {fileID: 564895223877314798}
-  - component: {fileID: 8826919845843085216}
   - component: {fileID: 35298468952043004}
   m_Layer: 0
   m_Name: DonkeyWheatVisual
@@ -89,42 +87,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &564895223877314798
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6322891063956489500}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c778701992a73947ac0f2e74c4799ae, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _playerController: {fileID: 0}
-  _transform: {fileID: 0}
-  _wheatDesignSO: {fileID: 11400000, guid: f8a7ad582d84b7f40ab4809b37d3aa47, type: 2}
---- !u!65 &8826919845843085216
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6322891063956489500}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.74145955, y: 0.98769015, z: 0.14651388}
-  m_Center: {x: 0.04649511, y: -0.19377175, z: -0.003049519}
 --- !u!95 &35298468952043004
 Animator:
   serializedVersion: 7
@@ -156,6 +118,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4908039757787484166}
+  - component: {fileID: 1341587009011077059}
+  - component: {fileID: 110036100912833771}
   m_Layer: 0
   m_Name: DonkeyWheat
   m_TagString: DonkeyWheat
@@ -179,3 +143,40 @@ Transform:
   - {fileID: 1063229170972050034}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1341587009011077059
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7735996000991032953}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c778701992a73947ac0f2e74c4799ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerController: {fileID: 0}
+  _transform: {fileID: 0}
+  _playerStateUI: {fileID: 0}
+  _wheatDesignSO: {fileID: 11400000, guid: f8a7ad582d84b7f40ab4809b37d3aa47, type: 2}
+--- !u!65 &110036100912833771
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7735996000991032953}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.74145955, y: 0.98769015, z: 0.14651388}
+  m_Center: {x: 0.04649511, y: -0.19377175, z: -0.003049519}
