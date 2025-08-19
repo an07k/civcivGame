@@ -3,18 +3,19 @@ using UnityEngine;
 public class SpatulaBooster : MonoBehaviour, IBoostable
 {
     [SerializeField] private Animator _spatulaAnimator;
-    [SerializeField] private float _jumpForce;
+
+    [SerializeField] private BoostableDesignSO _boostableDesignSO;
 
     private bool _isActivated;
     public void Boost(PlayerController playerController)
     {
         if (_isActivated) { return; }
-        
+
         PlayBoostAnimation();
         Rigidbody playerRigidbody = playerController.GetPlayerRigidbody();
 
         playerRigidbody.linearVelocity = new Vector3(playerRigidbody.linearVelocity.x, 0f, playerRigidbody.linearVelocity.z);
-        playerRigidbody.AddForce(transform.forward * _jumpForce, ForceMode.Impulse);
+        playerRigidbody.AddForce(transform.forward * _boostableDesignSO.JumpForce, ForceMode.Impulse);
 
         _isActivated = true;
 
