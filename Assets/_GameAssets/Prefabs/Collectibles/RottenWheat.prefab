@@ -43,8 +43,6 @@ GameObject:
   - component: {fileID: 8953236609698877897}
   - component: {fileID: 4051320511298140434}
   - component: {fileID: 3880312241767693703}
-  - component: {fileID: 2672205740375280687}
-  - component: {fileID: 8749963812342481557}
   - component: {fileID: 7604847220686132267}
   m_Layer: 0
   m_Name: RottenWheatVisual
@@ -121,41 +119,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &2672205740375280687
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8875334057040996280}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 991c5f7505b3f86469957847162f5cfa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _playerController: {fileID: 0}
-  _wheatDesignSO: {fileID: 11400000, guid: d54fda2d10549834eaafd84ea9245ec2, type: 2}
---- !u!65 &8749963812342481557
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8875334057040996280}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.74145955, y: 0.98769015, z: 0.14651388}
-  m_Center: {x: 0.04649511, y: -0.19377175, z: -0.003049519}
 --- !u!95 &7604847220686132267
 Animator:
   serializedVersion: 7
