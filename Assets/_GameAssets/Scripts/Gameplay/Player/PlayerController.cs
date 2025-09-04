@@ -3,6 +3,9 @@ using NUnit.Framework.Constraints;
 using UnityEngine;
 using UnityEngine.UIElements;
 
+/* TODO
+-Booster'ların ikonuna etkisi bitecek süreyi gösterecek şekilde tükenme animasyonu
+*/
 public class PlayerController : MonoBehaviour
 {
     public event Action OnPlayerJumped;
