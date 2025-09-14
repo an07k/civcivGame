@@ -1,5 +1,6 @@
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class WinLoseUI : MonoBehaviour
@@ -9,6 +10,7 @@ public class WinLoseUI : MonoBehaviour
     private Image _blackBackgroundImage;
     private RectTransform _winPopUpRect;
     private RectTransform _losePopUpRect;
+    public bool _ifWinOrLose;
 
     [SerializeField] private GameObject _winPopUp;
     [SerializeField] private GameObject _losePopUp;
@@ -26,25 +28,22 @@ public class WinLoseUI : MonoBehaviour
 
     public void OnGameWin()
     {
+        _ifWinOrLose = true;
         _blackBackgroundObject.SetActive(true);
         _winPopUp.SetActive(true);
 
         _blackBackgroundImage.DOFade(0.8f, _animationDuration).SetEase(Ease.Linear);
         _winPopUpRect.DOScale(1.5f, _animationDuration).SetEase(Ease.OutBack);
+        
     }
 
     public void OnGameLose()
     {
+        _ifWinOrLose = true;
         _blackBackgroundObject.SetActive(true);
         _losePopUp.SetActive(true);
 
         _blackBackgroundImage.DOFade(0.8f, _animationDuration).SetEase(Ease.Linear);
         _losePopUpRect.DOScale(1.5f, _animationDuration).SetEase(Ease.OutBack);
-    }
-
-    public void OnRestart()
-    {
-        _blackBackgroundImage.DOFade(0f, _animationDuration).SetEase(Ease.Linear);
-
     }
 }

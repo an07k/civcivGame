@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
 
     [Header("References")]
 
+    [SerializeField] private SettingsUI _settingsUI;
     [SerializeField] private EggCounterUI _eggCounterUI;
     [SerializeField] private WinLoseUI _winLoseUI;
     [Header("Settings")]
@@ -18,6 +19,7 @@ public class GameManager : MonoBehaviour
     private int _currentEggCount;
     void Awake()
     {
+        Cursor.visible = true;
         Instance = this;
     }
 
