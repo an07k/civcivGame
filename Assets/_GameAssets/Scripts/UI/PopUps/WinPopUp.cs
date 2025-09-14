@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class WinPopUp : MonoBehaviour
 {
     [Header("References")]
+    [SerializeField] WinLoseUI _winloseui;
     [SerializeField] TimerUI _timerUI;
     [SerializeField] private Button _restartButton;
     [SerializeField] private Button _menuButton;
@@ -18,6 +19,7 @@ public class WinPopUp : MonoBehaviour
     }
     private void OnRestartClicked()
     {
+        _winloseui._ifWinOrLose = false;
         SceneManager.LoadScene(Consts.Scenes.GAME_SCENE);
     }
 

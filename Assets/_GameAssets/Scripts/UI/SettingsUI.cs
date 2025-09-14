@@ -24,6 +24,15 @@ public class SettingsUI : MonoBehaviour
     [Header("Settings")]
     [SerializeField] private float _animationDuration;
 
+    [Header("Sprites")]
+
+    [SerializeField] private Sprite _soundOnSprite;
+    [SerializeField] private Sprite _soundOffSprite;
+    [SerializeField] private Sprite _musicOnSprite;
+    [SerializeField] private Sprite _musicOffSprite;
+    private bool _isSoundOn = true;
+    private bool _isMusicOn = true;
+
     private Image _blackBackgroundImage;
     void Awake()
     {
@@ -32,7 +41,10 @@ public class SettingsUI : MonoBehaviour
 
         _settingsButton.onClick.AddListener(OnSettingsButtonClicked);
         _resumeButton.onClick.AddListener(OnResumeButtonClicked);
+        _menuButton.onClick.AddListener(OnMenuButtonClicked);
         _restartButton.onClick.AddListener(OnRestartButtonClicked);
+        _soundButton.onClick.AddListener(OnSoundButtonClicked);
+        _musicButton.onClick.AddListener(OnMusicButtonClicked);
 
     }
 
@@ -82,26 +94,38 @@ public class SettingsUI : MonoBehaviour
         _blackBackgroundObject.SetActive(false);
         _settingsPopUpObject.SetActive(false);
         SceneManager.LoadScene(Consts.Scenes.GAME_SCENE);
-        
+
 
 
     }
 
-    private void SetCameraPassive()
+    private void StopTime()
     {
-        _freeCamera.SetActive(false);
-    }
-
-    private void SetCameraActive()
-    {
-        _freeCamera.SetActive(true);
-    }
-
-    private void StopTime() {
         Time.timeScale = 0f;
     }
 
-    private void ResumeTime() {
+    private void ResumeTime()
+    {
         Time.timeScale = 1f;
+    }
+
+    private void OnSoundButtonClicked()
+    {
+        _soundButton.image.sprite = _isSoundOn ? _soundOffSprite : _soundOnSprite;
+
+        _isSoundOn = !_isSoundOn;
+    }
+
+    private void OnMusicButtonClicked()
+    {
+        _musicButton.image.sprite = _isMusicOn ? _musicOffSprite : _musicOnSprite;
+
+        _isMusicOn = !_isMusicOn;
+    }
+
+    private void OnMenuButtonClicked()
+    {
+        ResumeTime();
+        SceneManager.LoadScene(Consts.Scenes.MENU_SCENE);
     }
 }
