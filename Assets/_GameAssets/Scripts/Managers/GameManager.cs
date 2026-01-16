@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -13,6 +14,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private WinLoseUI _winLoseUI;
     [Header("Settings")]
 
+    [SerializeField] private float _delay;
     [SerializeField] private int _maxEggCount = 5;
 
     private GameState _currentGameState;
@@ -42,7 +44,17 @@ public class GameManager : MonoBehaviour
             _winLoseUI.OnGameWin();
         }
     }
+    private IEnumerator OnGameOver()
+    {
+        yield return new WaitForSeconds(_delay);
+        ChangeGameState(GameState.GameOver);
+        _winLoseUI.OnGameLose();
+    }
 
+    public void PlayGameOver()
+    {
+        StartCoroutine(OnGameOver());
+    }
     public void ChangeGameState(GameState gameState)
     {
         OnGameStateChanged?.Invoke(gameState);
