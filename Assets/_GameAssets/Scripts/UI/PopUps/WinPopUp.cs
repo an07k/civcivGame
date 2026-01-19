@@ -14,12 +14,39 @@ public class WinPopUp : MonoBehaviour
 
     void OnEnable()
     {
-        _timerText.text = _timerUI.GetFinalTime();
-        _restartButton.onClick.AddListener(OnRestartClicked);
+        if (_timerUI == null)
+        {
+            Debug.LogWarning("WinPopUp: _timerUI is not assigned in the inspector!");
+        }
+        else if (_timerText == null)
+        {
+            Debug.LogWarning("WinPopUp: _timerText is not assigned in the inspector!");
+        }
+        else
+        {
+            _timerText.text = _timerUI.GetFinalTime();
+        }
+
+        if (_restartButton == null)
+        {
+            Debug.LogWarning("WinPopUp: _restartButton is not assigned in the inspector!");
+        }
+        else
+        {
+            _restartButton.onClick.AddListener(OnRestartClicked);
+        }
     }
     private void OnRestartClicked()
     {
-        _winloseui._ifWinOrLose = false;
+        if (_winloseui == null)
+        {
+            Debug.LogWarning("WinPopUp: _winloseui is not assigned in the inspector!");
+        }
+        else
+        {
+            _winloseui._ifWinOrLose = false;
+        }
+
         SceneManager.LoadScene(Consts.Scenes.GAME_SCENE);
     }
 

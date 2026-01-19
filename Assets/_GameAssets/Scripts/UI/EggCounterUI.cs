@@ -19,16 +19,34 @@ public class EggCounterUI : MonoBehaviour
 
     void Awake()
     {
+        if (_eggCounterText == null)
+        {
+            Debug.LogWarning("EggCounterUI: _eggCounterText is not assigned in the inspector!");
+            return;
+        }
+
         _eggCounterRectTransform = _eggCounterText.gameObject.GetComponent<RectTransform>();
     }
 
     public void SetEggCounterText(int counter, int max)
     {
+        if (_eggCounterText == null)
+        {
+            Debug.LogWarning("EggCounterUI: Cannot set text, _eggCounterText is null!");
+            return;
+        }
+
         _eggCounterText.text = counter.ToString() + "/" + max.ToString();
     }
 
     public void SetEggCompleted()
     {
+        if (_eggCounterText == null || _eggCounterRectTransform == null)
+        {
+            Debug.LogWarning("EggCounterUI: Cannot complete egg animation, references are null!");
+            return;
+        }
+
         _eggCounterText.DOColor(_eggCounterColor, _colorDuration);
         _eggCounterRectTransform.DOScale(1.2f, _scaleDuration).SetEase(Ease.OutBack);
     }

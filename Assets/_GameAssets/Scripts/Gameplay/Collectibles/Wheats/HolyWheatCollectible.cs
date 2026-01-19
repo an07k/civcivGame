@@ -23,7 +23,8 @@ public class HolyWheatCollectible : MonoBehaviour, ICollectible
 
         _playerStateUI.BoosterUIAnimations(_playerBoosterTransform, _playerBoosterImage,
             _playerStateUI.GetHolyWheatImage, _wheatDesignSO.ActiveSprite, _wheatDesignSO.PassiveSprite,
-            _wheatDesignSO.ActiveWheatSprite, _wheatDesignSO.PassiveWheatSprite, _wheatDesignSO.ResetBoostDuration);
+            _wheatDesignSO.ActiveWheatSprite, _wheatDesignSO.PassiveWheatSprite, _wheatDesignSO.ResetBoostDuration,
+            _playerStateUI.GetBoostJumpCountdownImage);
         Destroy(gameObject);
     }
 }

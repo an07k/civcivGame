@@ -26,6 +26,11 @@ public class PlayerInteractionsController : MonoBehaviour
         {
             boostable.Boost(_playerController);
         }
+
+        if (other.gameObject.TryGetComponent<IDamageables>(out var damageable))
+        {
+            damageable.GiveDamage(_playerRigidbody, _playerVisualTransform);
+        }
     }
 
     private void OnParticleCollision(GameObject other)

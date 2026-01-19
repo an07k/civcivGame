@@ -15,13 +15,40 @@ public class LosePopUp : MonoBehaviour
 
     void OnEnable()
     {
-        _timerText.text = _timerUI.GetFinalTime();
-        _tryAgainButton.onClick.AddListener(OnTryAgainClicked);
+        if (_timerUI == null)
+        {
+            Debug.LogWarning("LosePopUp: _timerUI is not assigned in the inspector!");
+        }
+        else if (_timerText == null)
+        {
+            Debug.LogWarning("LosePopUp: _timerText is not assigned in the inspector!");
+        }
+        else
+        {
+            _timerText.text = _timerUI.GetFinalTime();
+        }
+
+        if (_tryAgainButton == null)
+        {
+            Debug.LogWarning("LosePopUp: _tryAgainButton is not assigned in the inspector!");
+        }
+        else
+        {
+            _tryAgainButton.onClick.AddListener(OnTryAgainClicked);
+        }
     }
 
     private void OnTryAgainClicked()
     {
-        _winloseui._ifWinOrLose = false;
+        if (_winloseui == null)
+        {
+            Debug.LogWarning("LosePopUp: _winloseui is not assigned in the inspector!");
+        }
+        else
+        {
+            _winloseui._ifWinOrLose = false;
+        }
+
         SceneManager.LoadScene(Consts.Scenes.GAME_SCENE);
     }
 }

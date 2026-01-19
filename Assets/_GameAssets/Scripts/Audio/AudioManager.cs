@@ -3,11 +3,22 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
+    public static AudioManager Instance { get; private set; }
+
     [Header("Sounds")]
     public Sound[] Sounds;
-    
-    private void Awake() 
+
+    private void Awake()
     {
+        if (Instance != null)
+        {
+            Debug.LogWarning("Multiple AudioManager instances found. Destroying duplicate.");
+            Destroy(gameObject);
+            return;
+        }
+
+        Instance = this;
+
         foreach (Sound s in Sounds)
         {
             s.Source = gameObject.AddComponent<AudioSource>();

@@ -59,7 +59,9 @@ public class GameManager : MonoBehaviour
     {
         OnGameStateChanged?.Invoke(gameState);
         _currentGameState = gameState;
+        #if UNITY_EDITOR
         Debug.Log("Game State: " + gameState);
+        #endif
     }
 
     public GameState GetCurrentGameState()

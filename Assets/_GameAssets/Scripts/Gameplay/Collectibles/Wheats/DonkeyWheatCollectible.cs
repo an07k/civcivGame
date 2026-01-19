@@ -20,10 +20,11 @@ public class DonkeyWheatCollectible : MonoBehaviour, ICollectible
     public void Collect()
     {
         _playerController.IncreaseScale(_wheatDesignSO.IncreaseDecreaseMultiplier, _wheatDesignSO.ResetBoostDuration);
-        
+
         _playerStateUI.BoosterUIAnimations(_playerBoosterTransform, _playerBoosterImage,
             _playerStateUI.GetDonkeyWheatImage, _wheatDesignSO.ActiveSprite, _wheatDesignSO.PassiveSprite,
-            _wheatDesignSO.ActiveWheatSprite, _wheatDesignSO.PassiveWheatSprite, _wheatDesignSO.ResetBoostDuration);
+            _wheatDesignSO.ActiveWheatSprite, _wheatDesignSO.PassiveWheatSprite, _wheatDesignSO.ResetBoostDuration,
+            _playerStateUI.GetBoostScaleCountdownImage);
         Destroy(this.gameObject);
     }
 }

@@ -25,6 +25,12 @@ public class PlayerStateUI : MonoBehaviour
     [SerializeField] private Image _rottenWheatImage;
     [SerializeField] private Image _donkeyWheatImage;
 
+    [Header("Countdown Fill Images")]
+    [SerializeField] private Image _boostSpeedCountdownImage;
+    [SerializeField] private Image _boostJumpCountdownImage;
+    [SerializeField] private Image _boostSlowCountdownImage;
+    [SerializeField] private Image _boostScaleCountdownImage;
+
     [Header("Sprites")]
 
     [SerializeField] private Sprite _playerWalkingActiveSprite;
@@ -52,16 +58,41 @@ public class PlayerStateUI : MonoBehaviour
     public Image GetRottenWheatImage => _rottenWheatImage;
 
     public Image GetDonkeyWheatImage => _donkeyWheatImage;
+
+    public Image GetBoostSpeedCountdownImage => _boostSpeedCountdownImage;
+    public Image GetBoostJumpCountdownImage => _boostJumpCountdownImage;
+    public Image GetBoostSlowCountdownImage => _boostSlowCountdownImage;
+    public Image GetBoostScaleCountdownImage => _boostScaleCountdownImage;
     void Awake()
     {
-        playerWalkingImage = _playerWalkingTransform.GetComponent<Image>();
-        playerSlidingImage = _playerSlidingTransform.GetComponent<Image>();
+        if (_playerWalkingTransform == null)
+        {
+            Debug.LogWarning("PlayerStateUI: _playerWalkingTransform is not assigned in the inspector!");
+        }
+        else
+        {
+            playerWalkingImage = _playerWalkingTransform.GetComponent<Image>();
+        }
 
+        if (_playerSlidingTransform == null)
+        {
+            Debug.LogWarning("PlayerStateUI: _playerSlidingTransform is not assigned in the inspector!");
+        }
+        else
+        {
+            playerSlidingImage = _playerSlidingTransform.GetComponent<Image>();
+        }
 
     }
 
     void Start()
     {
+        if (_playerController == null)
+        {
+            Debug.LogWarning("PlayerStateUI: _playerController is not assigned in the inspector!");
+            return;
+        }
+
         _playerController.OnPlayerStateChanged += PlayerController_OnPlayerStateChanged;
 
         SetStateUserInterface(_playerWalkingActiveSprite, _playerSlidingInactiveSprite, _playerWalkingTransform, _playerSlidingTransform);
@@ -88,6 +119,17 @@ public class PlayerStateUI : MonoBehaviour
     private void SetStateUserInterface(Sprite playerWalkingSprite, Sprite playerSlidingSprite,
             RectTransform activeTransform, RectTransform passiveTransform)
     {
+        if (playerWalkingImage == null || playerSlidingImage == null)
+        {
+            Debug.LogWarning("PlayerStateUI: Player images are null!");
+            return;
+        }
+
+        if (activeTransform == null || passiveTransform == null)
+        {
+            Debug.LogWarning("PlayerStateUI: Transforms are null!");
+            return;
+        }
 
         playerWalkingImage.sprite = playerWalkingSprite;
         playerSlidingImage.sprite = playerSlidingSprite;
@@ -97,13 +139,43 @@ public class PlayerStateUI : MonoBehaviour
     }
 
     private IEnumerator SetBoosterUserInterface(RectTransform activeTransform, Image boosterImage, Image wheatImage,
-            Sprite activeSprite, Sprite passiveSprite, Sprite activeWheatSprite, Sprite passiveWheatSprite, float duration)
+            Sprite activeSprite, Sprite passiveSprite, Sprite activeWheatSprite, Sprite passiveWheatSprite, float duration, Image countdownImage)
     {
+        if (activeTransform == null || boosterImage == null || wheatImage == null)
+        {
+            Debug.LogWarning("PlayerStateUI: Cannot animate booster UI, required references are null!");
+            yield break;
+        }
+
         boosterImage.sprite = activeSprite;
         wheatImage.sprite = activeWheatSprite;
         activeTransform.DOAnchorPosX(25f, _moveDuration).SetEase(_moveEase);
 
-        yield return new WaitForSeconds(duration);
+        // Initialize countdown image
+        if (countdownImage != null)
+        {
+            countdownImage.fillAmount = 1f;
+            countdownImage.enabled = true;
+        }
+
+        // Countdown animation
+        float elapsedTime = 0f;
+        while (elapsedTime < duration)
+        {
+            elapsedTime += Time.deltaTime;
+            if (countdownImage != null)
+            {
+                countdownImage.fillAmount = 1f - (elapsedTime / duration);
+            }
+            yield return null;
+        }
+
+        // Reset countdown image
+        if (countdownImage != null)
+        {
+            countdownImage.fillAmount = 0f;
+            countdownImage.enabled = false;
+        }
 
         boosterImage.sprite = passiveSprite;
         wheatImage.sprite = passiveWheatSprite;
@@ -111,9 +183,9 @@ public class PlayerStateUI : MonoBehaviour
     }
 
     public void BoosterUIAnimations(RectTransform activeTransform, Image boosterImage, Image wheatImage,
-            Sprite activeSprite, Sprite passiveSprite, Sprite activeWheatSprite, Sprite passiveWheatSprite, float duration)
+            Sprite activeSprite, Sprite passiveSprite, Sprite activeWheatSprite, Sprite passiveWheatSprite, float duration, Image countdownImage)
             {
         StartCoroutine(SetBoosterUserInterface(activeTransform, boosterImage, wheatImage, activeSprite,
-        passiveSprite, activeWheatSprite, passiveWheatSprite, duration));
+        passiveSprite, activeWheatSprite, passiveWheatSprite, duration, countdownImage));
             }
 }
